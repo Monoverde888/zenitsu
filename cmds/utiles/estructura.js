@@ -70,7 +70,7 @@ module.exports = {
 
 function name(a) {
 
-    return a.type == 'text' ? `[💬] ${a.name}` : a.type == 'news' ? `[🔔] ${a.name}` : a.type == 'store' ? `[🏬] ${a.name}` : `[❓] ${a.name}`
+    return a.type == 'text' ? `[💬] ${a.name}` : a.type == 'news' ? `[🔔] ${a.name}` : a.type == 'store' ? `[🏬] ${a.name}` : a.guild.rulesChannelID == a.id ? `[📕] ${a.name}` : `[❓] ${a.name}`
 
 }
 
