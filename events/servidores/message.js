@@ -33,12 +33,12 @@ module.exports = async (client, message) => {
     if (!message || !message.guild || !message.author) return;
     client.serverQueue = client.queue.get(message.guild.id);
 
-    await client.updateData({ idMember: message.author.id, idGuild: message.guild.id }, { cacheName: message.author.tag }, 'niveles').catch(() => { })
     const prefix = await message.guild.getPrefix();
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase()
 
     if (message.author.bot) return;
+    await client.updateData({ idMember: message.author.id, idGuild: message.guild.id }, { cacheName: message.author.tag }, 'niveles').catch(() => { })
     let emojiFinded = message.guild.emojis.cache.find(a => a.name === message.content.slice(2)) || client.emojis.cache.find(a => a.name === message.content.slice(2));
     //console.log(emojiFinded)
     if (message.content.slice(0, 2) === ': ' && emojiFinded) {
